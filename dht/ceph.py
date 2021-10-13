@@ -58,7 +58,6 @@ class RUSH():
         # loop through every node weight to see if we should place the value there
         for weight in nodeWeights:    # check which node it should be added to
             values_hash = self.calc_hash(value,replica_id,self.node_array[nodeIndex].id)  # get hash
-            node_weight = node.weight             # get node weight
             #print(f"Node: {self.node_array[nodeIndex].id} Hash: {values_hash} Weight: {node_weight}")
 
             # if prob <= weight then place the value in this node
@@ -207,7 +206,6 @@ class RUSH():
                 nodeWeight = "{:.4f}".format(cephNode.weight)
                 numValues = len(cephNode.data_array)
                 t.add_row([cephNode.id, nodeWeight, cephNode.values(), numValues])
-            totalWeight = f"Total of all weights is {self.sum_weights(self.node_array)}"
         else:
             t = PrettyTable(["Node ID", "Weight", "# of Values"])
 
